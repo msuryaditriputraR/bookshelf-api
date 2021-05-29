@@ -52,18 +52,27 @@ const getAllBooksHandler = (request, h) => {
         return response;
     }
 
-    // const booksFinished = books.filter(book => book.finished == finished);
+    const booksFinished = books.filter(book => book.finished == finished);
+    const newBooksFinished = [];
 
-    // if (booksFinished.length > 0) {
-    //     const response = h.response({
-    //         status: 'success',
-    //         data: {
-    //             books: booksFinished
-    //         }
-    //     });
-    //     response.code(200);
-    //     return response;
-    // }
+    booksFinished.forEach(book => {
+        newBooksFinished.push({
+            id: book.id,
+            name: book.name,
+            publisher: book.publisher
+        });
+    });
+
+    if (newBooksFinished.length > 0) {
+        const response = h.response({
+            status: 'success',
+            data: {
+                books: newBooksFinished
+            }
+        });
+        response.code(200);
+        return response;
+    }
 
     const response = h.response({
         status: 'success',
