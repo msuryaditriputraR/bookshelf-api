@@ -41,6 +41,19 @@ const getAllBooksHandler = (request, h) => {
         return response;
     }
 
+    const booksFinished = books.filter(book => book.finished == finished);
+
+    if (booksFinished.length > 0) {
+        const response = h.response({
+            status: 'success',
+            data: {
+                books: booksFinished
+            }
+        });
+        response.code(200);
+        return response;
+    }
+
     const response = h.response({
         status: 'success',
         data: {
