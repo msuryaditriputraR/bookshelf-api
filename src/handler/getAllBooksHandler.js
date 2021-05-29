@@ -13,6 +13,21 @@ const getAllBooksHandler = (request, h) => {
 
     const { name, reading, finished } = request.query;
 
+    if (name.toLowerCase() === 'dicoding') {
+        const response = h.response({
+            status: 'success',
+            data: {
+                books: books.map(book => {
+                    if (book.name.toLowerCase().includes('dicoding')) {
+                        return book;
+                    }
+                })
+            }
+        });
+        response.code(200);
+        return response;
+    }
+
     const response = h.response({
         status: 'success',
         data: {
