@@ -28,6 +28,19 @@ const getAllBooksHandler = (request, h) => {
         return response;
     }
 
+    const booksReading = books.filter(book => book.reading == reading);
+
+    if (booksReading.length > 0) {
+        const response = h.response({
+            status: 'success',
+            data: {
+                books: booksReading
+            }
+        });
+        response.code(200);
+        return response;
+    }
+
     const response = h.response({
         status: 'success',
         data: {
