@@ -11,6 +11,8 @@ const getAllBooksHandler = (request, h) => {
         });
     });
 
+    const { name, reading, finished } = request.query;
+
     const response = h.response({
         status: 'success',
         data: {
