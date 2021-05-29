@@ -30,18 +30,27 @@ const getAllBooksHandler = (request, h) => {
         }
     }
 
-    // const booksReading = books.filter(book => book.reading == reading);
+    const booksReading = books.filter(book => book.reading == reading);
+    const newBooksReading = [];
 
-    // if (booksReading.length > 0) {
-    //     const response = h.response({
-    //         status: 'success',
-    //         data: {
-    //             books: booksReading
-    //         }
-    //     });
-    //     response.code(200);
-    //     return response;
-    // }
+    booksReading.forEach(book => {
+        newBooksReading.push({
+            id: book.id,
+            name: book.name,
+            publisher: book.publisher
+        });
+    });
+
+    if (newBooksReading.length > 0) {
+        const response = h.response({
+            status: 'success',
+            data: {
+                books: newBooksReading
+            }
+        });
+        response.code(200);
+        return response;
+    }
 
     // const booksFinished = books.filter(book => book.finished == finished);
 
