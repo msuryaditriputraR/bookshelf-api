@@ -4,7 +4,7 @@ const {
     getDetailBookHandler,
     editBookHandler,
     deleteBookHandler
-} = require('./handler');
+} = require('../handler');
 
 const routes = [
     {
