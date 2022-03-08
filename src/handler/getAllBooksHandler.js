@@ -1,4 +1,4 @@
-const books = require('./../books');
+const books = require('../data/books');
 
 const getAllBooksHandler = (request, h) => {
     const newBooks = [];
